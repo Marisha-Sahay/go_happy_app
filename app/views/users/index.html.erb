@@ -1,0 +1,11 @@
+<h1>Looking for sitters</h1>
+<div class="row">
+  <% @users.each do |user| %>
+  <div class="col-md-4">
+   <a href="/users/<%= user.id %>">
+     <img src="<%= user.image if user.image %>" width="200" height="200">
+     <p><%= user.name %></p>
+   </div>
+   <% end %>
+ </table> 
+</div>
