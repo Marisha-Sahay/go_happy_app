@@ -10,4 +10,11 @@ get '/login',to: 'sessions#new'
 post '/login',to: 'sessions#create'
 get '/logout',to:'sessions#destroy'
 
+#JobPosts route
+get '/jobposts', to: 'jobposts#index'
+get '/jobposts/new',to: 'jobposts#new'
+post '/jobposts',to: 'jobposts#create'
+get '/jobposts/:id', to: 'jobposts#show'
+get '/jobposts/:id', to: 'jobposts#edit'
+get '/jobposts/delete/:id', to: 'jobposts#destroy'
 end

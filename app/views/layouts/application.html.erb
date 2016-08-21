@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>GoHappyApp</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>GoHappyApp</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+ <% flash.each do |name,message| %>
+ <div class="alert alert-<%=name%>" role="alert">
 
-  <body>
-    <%= yield %>
-  </body>
-  <% flash.each do |name,message| %>
-  <div class="alert alert-<%=name%>" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong> <%=message%> </strong>
+</div>
+<%end%>
+<%= yield %>
+</body>
 
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <strong> <%=message%> </strong>
-  </div>
-  <%end%>
 </html>

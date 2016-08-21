@@ -21,9 +21,9 @@ def show
 end
 
 def index
-  if @current_user && @current_user.user_type == "SEEKER"
+  if current_user && current_user.user_type == "SEEKER"
     @users = User.where("user_type LIKE ?", "SITTER")
-  elsif @current_user && @current_user.user_type == "SITTER"
+  elsif current_user && current_user.user_type == "SITTER"
     @users = User.where("user_type LIKE ?", "SEEKER")
   else
     @users = User.all

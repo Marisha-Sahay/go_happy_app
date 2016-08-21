@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+
+<h1>New Job Post</h1>
+<%=form_tag '/new', method: :post do%>
+
+<form class="form-horizontal">
+<div class="form-group">
+<%= label_tag :title %>
+<%= text_field_tag :title, "",class:"form-control" %>
+</div>
+<div class="form-group">
+<%= label_tag :description %>
+<%= text_field_tag :description, "", class:"form-control" %>
+</div>
+<div>
+<%= label_tag :childs_birthdate %>
+<%= text_field_tag :birthdate, "",class:"form-control" %>
+</div>
+<div>
+<%= label_tag :days_service_required %>
+<%= text_field_tag :days, "",class:"form-control" %>
+</div>
+<div>
+<%= label_tag :time_of_service_required %>
+<%= text_field_tag :time, "",class:"form-control" %>
+</div>
+<div>
+<%= label_tag :desired_enrollment_date %>
+<%= text_field_tag :desired_enrollment_date, "",class:"form-control" %>
+</div>
+<div>
+<%= label_tag :amount_willing_to_pay %>
+<%= text_field_tag :salary, "",class:"form-control" %>
+</div>
+<%=submit_tag 'Submit' %>
+<%end%>
