@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 has_secure_password
 has_many :job_posts
+has_one :profile
 # has_many :job_applications
 # has_many :appliers, class_name => 'job_applications', :foreign_key=>'applier_id'
 validates :first_name, length: { minimum: 2 }
