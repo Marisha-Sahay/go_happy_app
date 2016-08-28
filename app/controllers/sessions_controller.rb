@@ -9,7 +9,11 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:success] = 'Welcome!'
-      redirect_to '/'
+      if user.user_type == "SEEKER"
+        redirect_to '/'
+      else
+        redirect_to "/jobposts"
+      end
     else
       flash[:warning] = 'Invalid email or password!'
       redirect_to '/login'

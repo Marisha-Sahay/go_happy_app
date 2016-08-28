@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-3"></div>
   <div class="col-md-6">
-    <h1>User signup</h1>
+    <h1>Edit account</h1>
     <% if @user && @user.errors.any? %>
       <ul>
         <% @user.errors.full_messages.each do |message| %>
@@ -9,11 +9,9 @@
         <%end%>
       </ul>
     <% end %>
-    <%= form_tag '/users', method: :post do %>
+    <%= form_tag "/users/#{@user.id}", method: :patch do %>
     <form class="form-horizontal">
       <div class="form-group">
-
-
         <div class="form-group">
           <%=label_tag :first_name %>
           <%=text_field_tag :first_name,@user.first_name, class:"form-control" %>
@@ -31,16 +29,18 @@
           <%=text_field_tag :phone_no,@user.phone_no, class:"form-control" %>
         </div>
         <div class="form-group">
-          <%=label_tag :email %>
-          <%=text_field_tag :email, @user.email, class:"form-control" %>
+          <p><%=@user.email%>. *Email once created cannot be changed</p>
+        </div>
+        <div class="form-group">
+        <p>You need to re-enter password</p>
         </div>
         <div class="form-group">
           <%=label_tag :password %>
-          <%=password_field_tag :password,"", class:"form-control" %>
+          <%=text_field_tag :password, @user.password, class:"form-control" %>
         </div>
         <div class="form-group">
           <%=label_tag :password_confirmation %>
-          <%=password_field_tag :password_confirmation,"", class:"form-control"  %>
+          <%=text_field_tag :password_confirmation, @user.password, class:"form-control"  %>
         </div>
         <div class="radio-inline">
           <%=label_tag :seeker%>
@@ -54,5 +54,8 @@
           <div class="col-sm-offset-2 col-sm-10">
             <%= submit_tag "Submit" %>
           </div></div>
+          <div>
+            <a class="btn btn-default" href="/users/<%= @user.id %>" role="button">Cancel</a>
+          </div>
           <% end %>
         </form>

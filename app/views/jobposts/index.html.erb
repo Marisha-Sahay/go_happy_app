@@ -1,0 +1,12 @@
+<h1>Jobs for you, near you</h1>
+<div class="row">
+  <% @posts.each do |job_post| %>
+  <div class="col-md-4">
+   <a href="/jobposts/<%=job_post.id%>">
+     <p><%= job_post.title %></p>
+     <p><%= job_post.desired_enrollment_date %></p>
+     <p><%= job_post.salary %></p>
+   </div>
+   <% end %>
+ </table> 
+</div>
