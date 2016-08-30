@@ -24,4 +24,11 @@ delete '/jobposts/:id', to: 'jobposts#destroy'
 #JobApplications route
 post '/jobapplications/:id',to: 'jobapplications#create'
 
+#Profile routes
+get '/profile/new',to: 'profiles#new'
+post '/profile',to: 'profiles#create'
+get '/profile/:id', to: 'profiles#show'
+get '/profile/:id/edit', to: 'profiles#edit'
+patch '/profile/:id', to: 'profiles#update'
+
 end

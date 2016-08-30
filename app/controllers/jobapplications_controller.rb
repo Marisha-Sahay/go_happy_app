@@ -2,7 +2,7 @@ class JobapplicationsController < ApplicationController
 
 def create
   @post = JobPost.find_by(id: params[:id])
-  application = JobApplication.new(job_post_id: @post.id, poster_id: @post.user_id, applier_id: current_user.id, information: params[:information])  
+  application = JobApplication.new(job_post_id: @post.id, user_id: current_user.id, information: params[:information])  
   # binding.pry
   # if application.save! => give the error you get when its not saving
     if application.save
