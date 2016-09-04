@@ -1,58 +1,76 @@
 <div class="row">
   <div class="col-md-3"></div>
   <div class="col-md-6">
-    <h1>User signup</h1>
     <% if @user && @user.errors.any? %>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-        <li class="error"><%= message %></li>
-        <%end%>
-      </ul>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+      <li class="error"><%= message %></li>
+      <%end%>
+    </ul>
     <% end %>
     <%= form_tag '/users', method: :post do %>
     <form class="form-horizontal">
-      <div class="form-group">
-
-
+      <div class="row"">
         <div class="form-group">
-          <%=label_tag :first_name %>
-          <%=text_field_tag :first_name,@user.first_name, class:"form-control" %>
-        </div>
-        <div class="form-group">
-          <%=label_tag :last_name %>
-          <%=text_field_tag :last_name,@user.last_name, class:"form-control" %>
-        </div>
-        <div class="form-group">
-          <%=label_tag :address %>
-          <%=text_field_tag :address, @user.address, class:"form-control"  %>
-        </div>
-        <div class="form-group">
-          <%=label_tag :phone_no %>
-          <%=text_field_tag :phone_no,@user.phone_no, class:"form-control" %>
-        </div>
-        <div class="form-group">
-          <%=label_tag :email %>
-          <%=text_field_tag :email, @user.email, class:"form-control" %>
-        </div>
-        <div class="form-group">
-          <%=label_tag :password %>
-          <%=password_field_tag :password,"", class:"form-control" %>
-        </div>
-        <div class="form-group">
-          <%=label_tag :password_confirmation %>
-          <%=password_field_tag :password_confirmation,"", class:"form-control"  %>
-        </div>
-        <div class="radio-inline">
-          <%=label_tag :seeker%>
-          <%=radio_button_tag :user_type,"SEEKER",class:"form-control" %>
-        </div>
-        <div class="radio-inline">
-          <%=label_tag :sitter%>
-          <%=radio_button_tag :user_type,"SITTER",class:"form-control" %>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <%= submit_tag "Submit" %>
-          </div></div>
-          <% end %>
-        </form>
+          <div class="col-sm-offset-2 col-sm-10 inputs-group">
+            <%=label_tag :first_name %>
+            <%=text_field_tag :first_name,@user.first_name, class:"form-control" %>
+          </div></div></div>
+          <div class="row"">
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10 inputs-group">
+                <%=label_tag :last_name %>
+                <%=text_field_tag :last_name,@user.last_name, class:"form-control" %>
+              </div></div></div>
+              <div class="row"">
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10 inputs-group">
+                <%=label_tag :address %>
+                <%=text_field_tag :address, @user.address, class:"form-control"  %>
+              </div></div></div>
+              <div class="row"">
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10 inputs-group">
+                <%=label_tag :phone_no %>
+                <%=text_field_tag :phone_no,@user.phone_no, class:"form-control" %>
+              </div></div></div>
+              <div class="row"">
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10 inputs-group">
+                <%=label_tag :email %>
+                <%=text_field_tag :email, @user.email, class:"form-control" %>
+              </div></div></div>
+              <div class="row"">
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10 inputs-group">
+                <%=label_tag :password %>
+                <%=password_field_tag :password,"", class:"form-control" %>
+              </div></div></div>
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10 inputs-group">
+                <%=label_tag :password_confirmation %>
+                <%=password_field_tag :password_confirmation,"", class:"form-control"  %>
+              </div></div></div>
+              <div align="center">
+              <div class="radio-inline">
+                <%=label_tag :seeker%>
+                <%=radio_button_tag :user_type,"SEEKER",class:"form-control" %>
+              </div>
+              <div class="radio-inline">
+                <%=label_tag :sitter%>
+                <%=radio_button_tag :user_type,"SITTER",class:"form-control" %>
+              </div></div>
+              <br><br><br><br>
+              <div align="center">
+<button class="primary-btn" type="submit"><span>Create Your Account</span></button>
+<!-- <%=submit_tag %> -->
+</button></div>
+<%end%></form></div></div>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>

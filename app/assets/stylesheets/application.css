@@ -11,6 +11,16 @@
  * It is generally better to create a new file per style scope.
  *
  *= require font-awesome
- *= require_tree .
+ *= require bootstrap.min
+ *= require magnific-popup
+ *= require animate
+ *= require fonts
+ *= require owl.carousel
+ *= require preset
+  *= require theme
+ *= require responsive
+ *= require documenter_style
+ *= require google-code-prettify/prettify
  *= require_self
+ *= require_tree .
  */

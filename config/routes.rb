@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-get '/', to: 'users#index'
+
+get '/', to: 'users#home'
 get '/signup',to: 'users#new'
 post '/users',to: 'users#create'
 get '/users/:id', to: 'users#show'
@@ -30,5 +31,6 @@ post '/profile',to: 'profiles#create'
 get '/profile/:id', to: 'profiles#show'
 get '/profile/:id/edit', to: 'profiles#edit'
 patch '/profile/:id', to: 'profiles#update'
+get '/profiles', to: 'profiles#index'
 
 end

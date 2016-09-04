@@ -50,4 +50,10 @@ def index
     @users = User.all
   end
 end
+
+def home
+    @users = User.where("user_type LIKE ?", "SITTER")
+    @posts = JobPost.all
+end
+
 end
