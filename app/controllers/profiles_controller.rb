@@ -51,7 +51,10 @@ end
 
 
   def show
+    @sitters = User.where(user_type: "SITTER").where.not(id: current_user.id).limit(4)
+    if current_user 
     @profile = Profile.find_by(id: params[:id])
   end
+end
 
 end

@@ -3,11 +3,11 @@
   <div class="col-md-6">
     <h1>Edit account</h1>
     <% if @user && @user.errors.any? %>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-        <li class="error"><%= message %></li>
-        <%end%>
-      </ul>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+      <li class="error"><%= message %></li>
+      <%end%>
+    </ul>
     <% end %>
     <%= form_tag "/users/#{@user.id}", method: :patch do %>
     <form class="form-horizontal">
@@ -32,7 +32,7 @@
           <p><%=@user.email%>. *Email once created cannot be changed</p>
         </div>
         <div class="form-group">
-        <p>You need to re-enter password</p>
+          <p>You need to re-enter password</p>
         </div>
         <div class="form-group">
           <%=label_tag :password %>
@@ -53,9 +53,10 @@
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
             <%= submit_tag "Submit" %>
-          </div></div>
-          <div>
-            <a class="btn btn-default" href="/users/<%= @user.id %>" role="button">Cancel</a>
           </div>
-          <% end %>
-        </form>
+        </div>
+        <div class="button" align="center">
+          <%= button_tag "<span> Update Your Account</span>".html_safe, class: "btn primary-btn"%>
+        </div>
+        <% end %>
+      </form>

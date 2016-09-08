@@ -1,1 +1,165 @@
-<h1>Show page</h1>
+<% if @profile %>
+<div class="row">
+  <div class="col-sm-6 col-xs-12">
+    <div class="class-detail-img">
+      <img alt="" src="images/class1/class-details.jpg">
+    </div>
+  </div>
+  <div class="col-sm-6 col-xs-12">
+    <div class="class-information">
+      <h3><%=@profile.user.first_name%></h3>
+      <h5><%=@profile.user.address%></h5>
+      <h5><%@profile.user.phone_no%></h5>
+      <p>
+        <%=@profile.description%>
+      </p>
+    </div>
+    <div class="class-meta-data">
+      <div class="class-single-meta pull-left">
+        <p>CPR</p>
+        <%if @profile.cpr == true%>
+        <h4>Yes</h4>
+        <%else%>
+        <h4>No</h4>
+        <%end%>
+      </div>
+      <div class="class-single-meta pull-left">
+        <p>TrustLine</p>
+        <%if @profile.trustline == true%>
+        <h4>Yes</h4>
+        <%else%>
+        <h4>No</h4>
+        <%end%>
+      </div>
+      <div class="class-single-meta pull-left">
+        <p>First Aid</p>
+        <%if @profile.first_aid == true%>
+        <h4>Yes</h4>
+        <%else%>
+        <h4>No</h4>
+        <%end%>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+<!-- /.classes-section-2 -->
+
+<!-- Subject and teacher Section -->
+<section class="subject-and-teacher-details">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-xs-12">
+        <div class="subject-details">
+          <div class="sub-heading"><h4>Detailed Profile<span></span></h4></div>
+          <ul class="subject-list">
+            <li>
+              <a href="#">1. Gender</a>
+              <span><%=@profile.gender%></span>
+            </li>
+            <li>
+              <a href="#">2. Age</a>
+              <span><%=@profile.age%></span>
+            </li>
+            <li>
+              <a href="#">3. Comfortable with pets?</a>
+              <%if @profile.comfortable_with_pets == true%>
+              <span>Yes</span>
+              <%else%>
+              <span>No</span>
+              <%end%>
+            </li>
+            <li>
+              <a href="#">4. Preferred age group of kids</a>
+              <span><%=@profile.preferred_age_group%></span>
+            </li>
+            <li>
+              <a href="#">5. Education</a>
+              <span><%=@profile.education%></span>
+            </li>
+            <li>
+              <a href="#">6. Languages</a>
+              <span><%=@profile.languages%></span>
+            </li>
+            <li>
+              <a href="#">7. Type of job</a>
+              <span><%if @profile.type_of_job == "FULL"%>Full-time</span>
+              <span><%elsif @profile.type_of_job == "PART"%>Part-time</span>
+              <%end%>
+            </li>
+            <li>
+              <a href="#">8. Time from which available to work</a>
+              <span><%=@profile.availability%></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-xs-12">
+        <div class="sub-heading"><h4>Similar Sitters<span>( 4 Sitters )</span></h4></div>
+      </div>
+    </div>
+    <div class="row">
+    <%@sitters.each do |sitter| %>
+      <div class="col-sm-6 col-md-3 col-xs-12 text-center">
+        <div class="single-team">
+          <div class="team-img">
+            <img alt="" src="images/home1/staff1.jpg">
+            <ul class="team-social">
+              <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#" class="gplus"><i class="fa fa-google-plus"></i></a></li>
+              <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+          </div>
+          <h3><%sitter.first_name%></h3>
+          <p><%sitter.address%></p>
+        </div>
+      </div>
+      <%end%>
+    </div>
+  </div>
+</section>
+<!-- /.subject-and-teacher-details -->
+<!-- Call to Action -->
+<% if current_user && current_user.id == @profile.user_id %>
+<section class="callto-action-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-xs-12">
+        <div class="callto-content">
+          <h2>Improve your chances to get a get selected. </h2>
+          <div class="button" align="center">
+          <a href="/profile/<%=@profile.id%>/edit">
+            <%= button_tag "<span> Edit Profile</span>".html_safe, class: "btn primary-btn"%>
+          </a>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<%elsif current_user && current_user.user_type == 'SEEKER'%>
+<section class="callto-action-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-xs-12">
+        <div class="callto-content">
+          <h2>Interested in this babysitter? Make sure the sitter contacts you </h2>
+          <div class="button" align="center">
+            <%= button_tag "<span> Show interest</span>".html_safe, class: "btn primary-btn"%>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<%end%>
+<%else%>
+<%link_to("/profile/new") %>
+<%end%>

@@ -1,61 +1,74 @@
 <div class="row">
-  <div class="col-md-3"></div>
   <div class="col-md-6">
-<% if @user && @user.errors.any? %>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-        <li class="error"><%= message %></li>
-        <%end%>
-      </ul>
+    <% if @post && @post.errors.any? %>
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+      <li class="error"><%= message %></li>
+      <%end%>
+    </ul>
     <% end %>
-<%=form_tag '/jobposts', method: :post do%>
-<br><br><br>
-<form class="form-horizontal">
-  <div class="row"">
-    <div class="form-group">
-      <div class="col-sm-offset-1 col-sm-10 inputs-group">
-<%= label_tag :title %>
-<%= text_field_tag :title, "",class:"form-control" %>
-</div></div></div>
-  <div class="row"">
-    <div class="form-group">
-      <div class="col-sm-offset-1 col-sm-10 inputs-group">
-<%= label_tag :description %>
-<%= text_field_tag :description, "", class:"form-control" %>
-</div></div></div>
-  <div class="row"">
-    <div class="form-group">
-      <div class="col-sm-offset-1 col-sm-10 inputs-group">
-<%= label_tag :childs_birthdate %>
-<%= text_field_tag :birthdate, "",class:"form-control" %>
-</div></div></div>
-  <div class="row"">
-    <div class="form-group">
-      <div class="col-sm-offset-1 col-sm-10 inputs-group">
-<%= label_tag :days_service_required %>
-<%= text_field_tag :days, "",class:"form-control" %>
-</div></div></div>
-  <div class="row"">
-    <div class="form-group">
-      <div class="col-sm-offset-1 col-sm-10 inputs-group">
-<%= label_tag :time_of_service_required %>
-<%= text_field_tag :time, "",class:"form-control" %>
-</div></div></div>
-  <div class="row"">
-    <div class="form-group">
-      <div class="col-sm-offset-1 col-sm-10 inputs-group">
-<%= label_tag :desired_enrollment_date %>
-<%= text_field_tag :desired_enrollment_date, "",class:"form-control" %>
-</div></div></div>
-  <div class="row"">
-    <div class="form-group">
-      <div class="col-sm-offset-1 col-sm-10 inputs-group">
-<%= label_tag :amount_willing_to_pay %>
-<%= text_field_tag :salary, "",class:"form-control" %>
-</div></div></div>
-<div align="center">
-<button class="primary-btn" type="submit"><span>Post the Job</span></button>
-<!-- <%=submit_tag %> -->
-</button></div></form></div></div>
-<%end%>
-<br><br><br><br>
+    <%=form_tag '/jobposts', method: :post do%>
+    <form class="form-horizontal">
+      <div class="row"">
+        <div class="form-group">
+          <div class="col-sm-offset-1 col-sm-10 inputs-group">
+            <%= label_tag :title %>
+            <%= text_field_tag :title, "",class:"form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="row"">
+        <div class="form-group">
+          <div class="col-sm-offset-1 col-sm-10 inputs-group">
+            <%= label_tag :description %>
+            <%= text_field_tag :description, "", class:"form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="row"">
+        <div class="form-group">
+          <div class="col-sm-offset-1 col-sm-10 inputs-group">
+            <%= label_tag :childs_birthdate %>
+            <%= text_field_tag :birthdate, "",class:"form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="row"">
+        <div class="form-group">
+          <div class="col-sm-offset-1 col-sm-10 inputs-group">
+            <%= label_tag :days_service_required %>
+            <%= text_field_tag :days, "",class:"form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="row"">
+        <div class="form-group">
+          <div class="col-sm-offset-1 col-sm-10 inputs-group">
+            <%= label_tag :time_of_service_required %>
+            <%= text_field_tag :time, "",class:"form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="row"">
+        <div class="form-group">
+          <div class="col-sm-offset-1 col-sm-10 inputs-group">
+            <%= label_tag :desired_enrollment_date %>
+            <%= text_field_tag :desired_enrollment_date, "",class:"form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="row"">
+        <div class="form-group">
+          <div class="col-sm-offset-1 col-sm-10 inputs-group">
+            <%= label_tag :amount_willing_to_pay %>
+            <%= text_field_tag :salary, "",class:"form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="button" align="center">
+        <%= button_tag "<span> Create a Job</span>".html_safe, class: "btn primary-btn"%>
+      </div>
+    </form>
+    <%end%>
+  </div>
+</div>

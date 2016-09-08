@@ -23,7 +23,11 @@ class JobpostsController < ApplicationController
   end
 
   def index
-    @posts = JobPost.all
+    if current_user && type? == 'SEEKER'
+      @posts = JobPost.where(user_id: current_user.id)
+    elsif current_user && type? == 'SITTER'
+      @posts = JobPost.all
+    end
   end
 
   def edit 

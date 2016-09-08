@@ -30,6 +30,10 @@
         <%=text_field_tag :preferred_age_group,@profile.preferred_age_group, class:"form-control" %>
       </div>
       <div class="form-group">
+        <%=label_tag :gender %>
+        <%=text_field_tag :gender,@profile.gender, class:"form-control" %>
+      </div>
+      <div class="form-group">
         <%=label_tag :education %>
         <%=text_field_tag :education,@profile.education, class:"form-control" %>
       </div>

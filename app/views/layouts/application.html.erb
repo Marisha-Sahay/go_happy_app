@@ -49,9 +49,9 @@
             </ul>
           </li>
           <%if current_user && current_user.user_type == "SEEKER" %>
-          <li><a href="shortcode.html">My Jobs</a></li>
+          <li><a href="/jobposts">My Jobs</a></li>
           <% elsif current_user && current_user.user_type == "SITTER" %>
-          <li><a href="shortcode.html">My Profile</a></li>
+          <li><a href="/profile/<%=current_user.id%>">My Profile</a></li>
           <%end%>
           <li class="menu-has-child">
             <a href="class.html">Classes</a>

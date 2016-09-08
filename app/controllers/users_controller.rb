@@ -7,6 +7,7 @@ end
 def create
   @user = User.new(first_name: params[:first_name], last_name: params[:last_name], address: params[:address], phone_no: params[:phone_no], email: params[:email], password: params[:password],
       password_confirmation: params[:password_confirmation], user_type: params[:user_type])
+  # binding.pry
   if @user.save
     flash[:success] = "Welcome #{@user.first_name}"
     redirect_to "/"
@@ -42,18 +43,22 @@ def show
 end
 
 def index
-  if current_user && current_user.user_type == "SEEKER"
-    @users = User.where("user_type LIKE ?", "SITTER")
-  elsif current_user && current_user.user_type == "SITTER"
+  if type? == "SEEKER"
     @users = User.where("user_type LIKE ?", "SEEKER")
+  elsif type? == "SITTER"
+    @users = User.where("user_type LIKE ?", "SITTER")
   else
     @users = User.all
   end
 end
 
 def home
-    @users = User.where("user_type LIKE ?", "SITTER")
-    @posts = JobPost.all
+  if type? == "SEEKER"
+    redirect_to '/profiles'
+  elsif type? == "SITTER"
+    redirect_to '/jobposts'
+  end
 end
+
 
 end

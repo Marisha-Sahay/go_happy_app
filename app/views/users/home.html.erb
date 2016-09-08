@@ -1,40 +1,23 @@
 <!DOCTYPE html>
 <html>
-
 <body>
-<% if current_user && current_user.user_type == "SEEKER" %>
-<a href="/profiles"></a>
-<%elsif current_user && current_user.user_type == "SITTER" %>
-<div class="row">
-  <% @posts.each do |job_post| %>
-  <div class="col-md-4">
-   <a href="/jobposts/<%=job_post.id%>">
-     <p><%= job_post.title %></p>
-     <p><%= job_post.desired_enrollment_date %></p>
-     <p><%= job_post.salary %></p>
-   </div>
-   <% end %>
- </table> 
-</div>
-<%else%>
-
-        <!-- Slider Area -->
-        <div id="owl-init" class="home2">
-            <section class="slider-area slider-2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12 col-xs-12 text-center">
-                            <div class="slider-content">
-                                <h2 class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">A new approach to</h2>
-                                <h3 class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="350ms">Babysitting</h3>
-                                <h3 class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="400ms">Services</h3>
-                                <a class="primary-btn wow fadeInUp" data-wow-duration="700ms" data-wow-delay="450ms" href="/signup"><span>Get Started</span></a>
-                            </div>
+    <!-- Slider Area -->
+    <div id="owl-init" class="home2">
+        <section class="slider-area slider-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-xs-12 text-center">
+                        <div class="slider-content">
+                            <h2 class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">A new approach to</h2>
+                            <h3 class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="350ms">Babysitting</h3>
+                            <h3 class="wow fadeInUp" data-wow-duration="700ms" data-wow-delay="400ms">Services</h3>
+                            <a class="primary-btn wow fadeInUp" data-wow-duration="700ms" data-wow-delay="450ms" href="/signup?user_type=SEEKER"><span>Parent</span></a>
+                            <a class="primary-btn wow fadeInUp" data-wow-duration="700ms" data-wow-delay="450ms" href="/signup?user_type=SITTER"><span>Babysitter</span></a>
                         </div>
                     </div>
                 </div>
-                <div class="slide-overlay"></div>
-            </section>
+            </div>
+            <div class="slide-overlay"></div>
+        </section>
     </body>
-</html>
-<%end%>
+    </html>

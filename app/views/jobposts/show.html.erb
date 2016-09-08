@@ -6,16 +6,18 @@
 <p><%= @post.desired_enrollment_date%></p>
 <p><%=@post.salary%></p>
 <% if current_user && current_user.user_type == "SEEKER" && current_user.id == @post.user_id %>
-  <li><%= link_to "Edit", "/jobposts/#{@post.id}/edit" %></li> 
-  <li><%= link_to "Delete", "/jobposts/#{@post.id}", method: :delete %></li>
+<li><%= link_to "Edit", "/jobposts/#{@post.id}/edit" %></li> 
+<li><%= link_to "Delete", "/jobposts/#{@post.id}", method: :delete %></li>
 <% end %>
 <% if current_user && current_user.user_type == "SITTER" %>
 <%=form_tag "/jobapplications/#{@post.id}", method: :post do%>
 <form class="form-horizontal">
-<div class="form-group">
-<%= label_tag :additional_information %>
-<%= text_field_tag :information, "",class:"form-control" %>
-</div>
-<%=submit_tag 'Apply' %>
-<%end%>
-<%end%>
+  <div class="form-group">
+    <%= label_tag :additional_information %>
+    <%= text_field_tag :information, "",class:"form-control" %>
+  </div>
+  <div class="button" align="center">
+    <%= button_tag "<span> Apply for the job </span>".html_safe, class: "btn primary-btn"%>
+  </div>
+  <%end%>
+  <%end%>

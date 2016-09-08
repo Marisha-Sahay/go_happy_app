@@ -363,7 +363,7 @@
 /* Slider Section
    ========================================================================== */
 .slider-area{
-    background: #7ee5e8 url("images/home1/main-slider.jpg") no-repeat scroll center center / cover ;
+    background: #7ee5e8 image_url("main-slider.jpg") no-repeat scroll center center / cover ;
     overflow: hidden;
     padding-top: 126px;
     position: relative;
@@ -541,7 +541,7 @@ img.slide-cloud {
     display: block;
 }
 .slider-area.slider-2{
-    background: url("new-background.jpeg") no-repeat scroll center center / cover;
+    background: url(<%= asset_path 'new-background.jpeg'%>)no-repeat scroll center center / cover ;
 }
 .slide-overlay{
     position: absolute;
