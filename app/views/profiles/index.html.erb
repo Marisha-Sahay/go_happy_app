@@ -1,1 +1,52 @@
-index.html.erb
+        <!-- Breadcrumb  -->
+        <section class="breadcrumb-section">
+          <div class="container">
+              <div class="col-sm-12 col-xs-12 text-center">
+                <div class="breadcrumb-content">
+                  <h2>Our Baby Sitters</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- /.breadcrumb-section  -->
+        <div class="row">
+          <div id="mixer">
+            <% @sitters.each do |sitter| %>
+            <% if sitter.profile %>
+            <div class="col-sm-4 col-xs-12 mix kinder play">
+              <div class="single-class">
+                <div class="class-img">
+                  <img alt="" src="images/class1/class1.jpg">
+                  <div class="class-hover">
+                    <a href="images/class1/class1.jpg" class="popup"><i class="icon-link"></i></a>
+                  </div>
+                </div>
+                <div class="class-details">
+                  <h3><a href="/profile/<%=sitter.profile.id%>"><%=sitter.first_name%></a></h3>
+                  <p><%=sitter.address%></p>
+                  <div class="clearfix">
+                    <div class="class-meta pull-left">
+                      <span>Age</span>
+                      <p><%=sitter.profile.age%></p>
+                    </div>
+                    <div class="class-meta pull-left">
+                      <span>Gender</span>
+                      <p><%=sitter.profile.gender%></p>
+                    </div>
+                    <div class="class-meta pull-left">
+                      <span>Type Of Job</span>
+                      <p><%if sitter.profile.type_of_job == "FULL"%>Full-Time</p>
+                      <p><%elsif sitter.profile.type_of_job == "PART"%>Part-Time</p>
+                      <%end%>
+                      </div>
+                    <%end%>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <%end%>
+            <div class="clearfix"></div>
+          </div>
+          </div>
+        <!-- /.classes-section -->

@@ -11,10 +11,13 @@
 // about supported directives.
 //
 //= require jquery.min
+//= require jquery_ujs 
 //= require bootstrap.min
 //= require mixIt
 //= require owl.carousel.min
 //= require jquery.magnific-popup.min
 //= require wow
 //= require main
+//= require angular
+//= require app
 //= require_tree .

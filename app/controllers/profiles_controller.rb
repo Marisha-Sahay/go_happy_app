@@ -57,4 +57,8 @@ end
   end
 end
 
+def index
+  @sitters = User.where(user_type: "SITTER")
+end
+
 end

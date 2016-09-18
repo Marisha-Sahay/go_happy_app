@@ -1,7 +1,5 @@
 <div class="row">
-  <div class="col-md-3"></div>
   <div class="col-md-6">
-    <h1>Edit account</h1>
     <% if @user && @user.errors.any? %>
     <ul>
       <% @user.errors.full_messages.each do |message| %>
@@ -11,52 +9,93 @@
     <% end %>
     <%= form_tag "/users/#{@user.id}", method: :patch do %>
     <form class="form-horizontal">
-      <div class="form-group">
+      <div class="row">
         <div class="form-group">
-          <%=label_tag :first_name %>
-          <%=text_field_tag :first_name,@user.first_name, class:"form-control" %>
-        </div>
-        <div class="form-group">
-          <%=label_tag :last_name %>
-          <%=text_field_tag :last_name,@user.last_name, class:"form-control" %>
-        </div>
-        <div class="form-group">
-          <%=label_tag :address %>
-          <%=text_field_tag :address, @user.address, class:"form-control"  %>
-        </div>
-        <div class="form-group">
-          <%=label_tag :phone_no %>
-          <%=text_field_tag :phone_no,@user.phone_no, class:"form-control" %>
-        </div>
-        <div class="form-group">
-          <p><%=@user.email%>. *Email once created cannot be changed</p>
-        </div>
-        <div class="form-group">
-          <p>You need to re-enter password</p>
-        </div>
-        <div class="form-group">
-          <%=label_tag :password %>
-          <%=text_field_tag :password, @user.password, class:"form-control" %>
-        </div>
-        <div class="form-group">
-          <%=label_tag :password_confirmation %>
-          <%=text_field_tag :password_confirmation, @user.password, class:"form-control"  %>
-        </div>
-        <div class="radio-inline">
-          <%=label_tag :seeker%>
-          <%=radio_button_tag :user_type,"SEEKER",class:"form-control" %>
-        </div>
-        <div class="radio-inline">
-          <%=label_tag :sitter%>
-          <%=radio_button_tag :user_type,"SITTER",class:"form-control" %>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <%= submit_tag "Submit" %>
+          <div class="col-sm-offset-2 col-sm-10 inputs-group">
+            <%=label_tag :first_name %>
+            <%=text_field_tag :first_name,@user.first_name, class:"form-control" %>
           </div>
         </div>
-        <div class="button" align="center">
-          <%= button_tag "<span> Update Your Account</span>".html_safe, class: "btn primary-btn"%>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10 inputs-group">
+            <%=label_tag :last_name %>
+            <%=text_field_tag :last_name,@user.last_name, class:"form-control" %>
+          </div>
         </div>
-        <% end %>
-      </form>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10 inputs-group">
+            <%=label_tag :address %>
+            <%=text_field_tag :address, @user.address, class:"form-control"  %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10 inputs-group">
+            <%=label_tag :phone_no %>
+            <%=text_field_tag :phone_no,@user.phone_no, class:"form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10 inputs-group">
+            <p><%=@user.email%>. *Email once created cannot be changed</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10 inputs-group">
+            <%=label_tag :password %>
+            <%=password_field_tag :password,"", class:"form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10 inputs-group">
+            <%=label_tag :password_confirmation %>
+            <%=password_field_tag :password_confirmation,"", class:"form-control"  %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10 inputs-group">
+            <div class="radio-inline">
+              <%=label_tag :seeker%>
+              <%=radio_button_tag :user_type,"SEEKER",class:"form-control" %>
+            </div>
+            <div class="radio-inline">
+              <%=label_tag :sitter%>
+              <%=radio_button_tag :user_type,"SITTER",class:"form-control" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="button" align="center">
+        <%= button_tag "<span> Update Your Account</span>".html_safe, class: "btn primary-btn"%>
+      </div>
+      <%end%>
+      <div class="row">
+        <div class="form-group">
+          <div align="center">
+            <a href="/users/<%= current_user.id %>">Cancel Editing</a>
+          </div>
+          <div class="row">
+            <div class="form-group">
+              <div align="center">
+              <%= link_to "Delete Account", "/users/#{current_user.id}/delete", method: :delete %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

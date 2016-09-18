@@ -1,15 +1,22 @@
+<% if !@posts.empty? %>
 <div class="row">
   <% if @posts %>
-    <% @posts.each do |job_post| %>
-      <div class="col-md-4">
-        <a href="/jobposts/<%=job_post.id%>">
-        <p>Title: <%= job_post.title %></p>
-        <p>Expected starting date: <%= job_post.desired_enrollment_date %></p>
-        <p>Expected salary: <%= job_post.salary %></p>
-      </div>
+  <% @posts.each do |job_post| %>
+  <div class="col-sm-4 col-xs-12 mix kinder play">
+    <a href="/jobposts/<%=job_post.id%>">
+      <p>Title: <%= job_post.title %></p>
+      <p>Expected starting date: <%= job_post.desired_enrollment_date %></p>
+      <p>Expected salary: <%= job_post.salary %></p>
+    </div>
     <% end %>
-  <%else%>
+    <%else%>
     <p>We see you still have not posted a job.</p>
     <a href="/jobposts/new">Start with posting a job today</a>
+    <% end %>
+  </div>
+  <% else %>
+  <div class="row">
+
+    <h1>No Results found</h1>
+  </div>
   <% end %>
-</div>

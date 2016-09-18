@@ -115,8 +115,8 @@
               <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
             </ul>
           </div>
-          <h3><%sitter.first_name%></h3>
-          <p><%sitter.address%></p>
+          <h3><%=sitter.first_name%></h3>
+          <p><%=sitter.address%></p>
         </div>
       </div>
       <%end%>
@@ -144,21 +144,38 @@
   </div>
 </section>
 <%elsif current_user && current_user.user_type == 'SEEKER'%>
-<section class="callto-action-section">
+<!-- <section class="callto-action-section">
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-xs-12">
         <div class="callto-content">
           <h2>Interested in this babysitter? Make sure the sitter contacts you </h2>
           <div class="button" align="center">
+          <a href="#">
             <%= button_tag "<span> Show interest</span>".html_safe, class: "btn primary-btn"%>
+            </a>
           </div>
           <div class="clearfix"></div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</section> -->
+<!-- Map Section -->
+        <section class="map-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-xs-12 text-center">
+                        <h2 class="title-2">Event Location</h2>
+                        <p class="subtitle">Herbert Hoover Conference House San Diego, CA</p>
+                        <div id="map" class="event-map">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.map-section -->
 <%end%>
 <%else%>
 <%link_to("/profile/new") %>

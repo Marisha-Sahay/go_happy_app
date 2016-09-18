@@ -13,5 +13,5 @@ class JobapplicationsController < ApplicationController
       redirect_to "/jobposts"
     end
   end
-
+  
 end

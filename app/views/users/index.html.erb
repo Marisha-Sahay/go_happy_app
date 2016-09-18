@@ -1,4 +1,4 @@
-<h1>Looking for <%= @users.last.user_type.downcase %>s near you?</h1>
+<% if !@users.empty? %>
 <div class="row">
   <% @users.each do |user| %>
   <div class="col-md-4">
@@ -9,3 +9,9 @@
    <% end %>
  </table> 
 </div>
+<% else %>
+<div class="row">
+
+  <h1>No Results found</h1>
+</div>
+<% end %>

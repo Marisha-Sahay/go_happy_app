@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  
+
   def new
     render 'new.html.erb'
   end
@@ -8,12 +8,11 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      flash[:success] = 'Welcome!'
-      if user.user_type == "SEEKER"
+      if type? == "SITTER" && user.profile == nil
+        flash[:success] = 'Welcome! Create a profile today so that people can see you'
         redirect_to '/'
-      else
-        redirect_to "/jobposts"
       end
+      redirect_to '/'
     else
       flash[:warning] = 'Invalid email or password!'
       redirect_to '/login'
