@@ -37,4 +37,12 @@ patch '/profile/:id', to: 'profiles#update'
 get '/profiles', to: 'profiles#index'
 
 mount Messenger::Bot::Space => "/webhook"
+
+namespace :api do
+  namespace :v1 do
+    get "/sitters", to: 'users#index'
+    get "/jobs", to: 'jobposts#index'
+  end
+end
+
 end

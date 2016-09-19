@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_one :profile
   has_many :job_applications
   mount_uploader :image, ImageUploader
+  # attr_accessor :image
 # has_many :applications, class_name: 'JobApplication', foreign_key: 'applier_id'
 
 validates :first_name, length: { minimum: 2 }

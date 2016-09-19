@@ -33,6 +33,8 @@ gem 'messenger-bot'
 gem 'carrierwave'
 gem 'fog'
 gem 'figaro'
+# photo resizing
+gem "mini_magick"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

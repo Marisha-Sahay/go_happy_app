@@ -6,7 +6,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(first_name: params[:first_name], last_name: params[:last_name], address: params[:address], phone_no: params[:phone_no], email: params[:email], password: params[:password],
-      password_confirmation: params[:password_confirmation], user_type: params[:user_type], image: params[:image])
+      password_confirmation: params[:password_confirmation], user_type: params[:user_type])
+    puts "hello"
+    p params[:image]
   # binding.pry
   if @user.save
     flash[:success] = "Welcome #{@user.first_name}"
