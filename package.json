@@ -1,4 +1,3 @@
-"start": "node index.js"
 {
   "name": "go_happy_app",
   "version": "1.0.0",
