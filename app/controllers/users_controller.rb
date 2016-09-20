@@ -5,10 +5,11 @@ class UsersController < ApplicationController
   end
 
   def create
+    uploader = ImageUploader.new
+    uploader.store!(params[:image_url])
     @user = User.new(first_name: params[:first_name], last_name: params[:last_name], address: params[:address], phone_no: params[:phone_no], email: params[:email], password: params[:password],
-      password_confirmation: params[:password_confirmation], user_type: params[:user_type], image_url: params[:image_url])
-    puts "hello"
-    p params[:image_url]
+      password_confirmation: params[:password_confirmation], user_type: params[:user_type], image_url: uploader)
+      puts uploader
   # binding.pry
   if @user.save
     flash[:success] = "Welcome #{@user.first_name}"
