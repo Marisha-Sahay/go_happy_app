@@ -19,5 +19,6 @@ Bundler.require(*Rails.groups)
 module GoHappyApp
   class Application < Rails::Application
     config.active_record.belongs_to_required_by_default = false
+    config.assets.initialize_on_precompile = false
   end
 end
