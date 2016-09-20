@@ -40,8 +40,7 @@ mount Messenger::Bot::Space => "/webhook"
 
 namespace :api do
   namespace :v1 do
-    get "/sitters", to: 'users#index'
-    get "/jobs", to: 'jobposts#index'
+    get "/apis", to: 'pages#index'
   end
 end
 
