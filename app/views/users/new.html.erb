@@ -7,7 +7,7 @@
       <%end%>
     </ul>
     <% end %>
-    <%= form_tag "/users", method: :post, :html => {:multipart => true} do %>
+    <%= form_tag "/users", method: :post, multipart: true do %>
     <form class="form-horizontal">
       <div class="row">
         <div class="form-group">
