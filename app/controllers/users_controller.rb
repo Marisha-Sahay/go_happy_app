@@ -32,6 +32,7 @@ def update
   user.password = params[:password]
   user.password_confirmation = params[:password_confirmation]
   user.user_type = params[:user_type]
+  user.image_url = params[:image_url]
   if user.save
     flash[:success] = "Your account is successfully updated."
     redirect_to "/users/#{user.id}"

@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :job_posts
   has_one :profile
   has_many :job_applications
+  has_many :reviews
   mount_uploader :image_url, ImageUploader
   # attr_accessor :image
 # has_many :applications, class_name: 'JobApplication', foreign_key: 'applier_id'

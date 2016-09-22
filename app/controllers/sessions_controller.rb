@@ -11,8 +11,9 @@ class SessionsController < ApplicationController
       if type? == "SITTER" && user.profile == nil
         flash[:success] = 'Welcome! Create a profile today so that people can see you'
         redirect_to '/'
-      end
+      else
       redirect_to '/'
+      end
     else
       flash[:warning] = 'Invalid email or password!'
       redirect_to '/login'

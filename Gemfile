@@ -34,7 +34,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'figaro'
 # photo resizing
-gem "mini_magick"
+gem 'mini_magick'
 gem 'rails_12factor', group: :production
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

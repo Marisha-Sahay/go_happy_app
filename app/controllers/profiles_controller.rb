@@ -53,8 +53,10 @@ end
   def show
     @sitters = User.where(user_type: "SITTER").where.not(id: current_user.id).limit(4)
     if current_user 
-    @profile = Profile.find_by(id: params[:id])
-  end
+      @profile = Profile.find_by(id: params[:id])
+    end
+    user = User.find_by(id: @profile.user_id)
+    @reviews = Review.where(user_id: user.id)
 end
 
 def index

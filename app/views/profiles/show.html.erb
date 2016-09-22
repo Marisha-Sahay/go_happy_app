@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-sm-6 col-xs-12">
     <div class="class-detail-img">
-      <img alt="" src="images/class1/class-details.jpg">
+      <img alt=""> <%= image_tag @profile.user.image_url %>
     </div>
   </div>
   <div class="col-sm-6 col-xs-12">
@@ -107,7 +107,7 @@
       <div class="col-sm-6 col-md-3 col-xs-12 text-center">
         <div class="single-team">
           <div class="team-img">
-            <img alt="" src="images/home1/staff1.jpg">
+            <img alt=""> <%= image_tag sitter.image_url %>
             <ul class="team-social">
               <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
               <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
@@ -123,6 +123,25 @@
     </div>
   </div>
 </section>
+<% if @reviews %> 
+<div class="row">
+      <div class="col-sm-12 col-xs-12">
+        <div class="sub-heading"><h4>Reviews</h4></div>
+      </div>
+    </div>
+        <div class="row">
+      <% @reviews.each do |review| %>
+      <div class="col-sm-6 col-md-3 col-xs-12 text-center">
+        <div class="single-team">
+          <h3><%=review.name%></h3>
+          <p><%=review.review%></p>
+        </div>
+      </div>
+      <%end%>
+    </div>
+  </div>
+  <% end %>
+
 <!-- /.subject-and-teacher-details -->
 <!-- Call to Action -->
 <% if current_user && current_user.id == @profile.user_id %>
@@ -151,8 +170,8 @@
         <div class="callto-content">
           <h2>Interested in this babysitter? Make sure the sitter contacts you </h2>
           <div class="button" align="center">
-          <a href="#">
-            <%= button_tag "<span> Show interest</span>".html_safe, class: "btn primary-btn"%>
+          <a href="/reviews/new?profile_id=<%=@profile.id%>">
+            <%= button_tag "<span> Write Review</span>".html_safe, class: "btn primary-btn"%>
             </a>
           </div>
           <div class="clearfix"></div>
@@ -169,7 +188,6 @@
                         <h2 class="title-2">Event Location</h2>
                         <p class="subtitle">Herbert Hoover Conference House San Diego, CA</p>
                         <div id="map" class="event-map">
-
                         </div>
                     </div>
                 </div>

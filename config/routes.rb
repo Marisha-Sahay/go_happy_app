@@ -36,7 +36,9 @@ get '/profile/:id/edit', to: 'profiles#edit'
 patch '/profile/:id', to: 'profiles#update'
 get '/profiles', to: 'profiles#index'
 
-mount Messenger::Bot::Space => "/webhook"
+#Review routes
+get '/reviews/new',to: 'reviews#new'
+post '/reviews',to: 'reviews#create'
 
 namespace :api do
   namespace :v1 do

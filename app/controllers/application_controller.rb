@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     elsif current_user && current_user.user_type == 'SITTER'
       return 'SITTER'
     else
-      return
+      return 'GUEST'
     end
   end
 
