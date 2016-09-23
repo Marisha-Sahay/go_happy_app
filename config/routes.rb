@@ -40,6 +40,13 @@ get '/profiles', to: 'profiles#index'
 get '/reviews/new',to: 'reviews#new'
 post '/reviews',to: 'reviews#create'
 
+#ChatRooms routes
+resources :chat_rooms, only: [:new, :create, :show, :index]
+# root 'chat_rooms#index'
+get '/chatrooms', to: 'chat_rooms#index'
+get '/new_chatroom/:id', to: 'chat_rooms#new_chat'
+# mount ActionCable.server => '/cable'
+
 namespace :api do
   namespace :v1 do
     get "/sitters", to: 'pages#sitter'

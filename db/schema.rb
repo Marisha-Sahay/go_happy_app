@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922012821) do
+ActiveRecord::Schema.define(version: 20160923034101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chat_rooms", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "recipient_id"
+  end
 
   create_table "job_applications", force: :cascade do |t|
     t.integer  "job_post_id"
@@ -34,6 +42,14 @@ ActiveRecord::Schema.define(version: 20160922012821) do
     t.string   "days"
     t.integer  "user_id"
     t.date     "desired_enrollment_date"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "chat_room_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "profiles", force: :cascade do |t|

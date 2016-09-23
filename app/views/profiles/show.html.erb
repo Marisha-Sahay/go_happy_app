@@ -5,6 +5,9 @@
       <img alt=""> <%= image_tag @profile.user.image_url %>
     </div>
   </div>
+  <div>
+  <%= link_to "Start chat", "/new_chatroom/#{@profile.user_id}" %>
+  </div>
   <div class="col-sm-6 col-xs-12">
     <div class="class-information">
       <h3><%=@profile.user.first_name%></h3>
@@ -115,7 +118,7 @@
               <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
             </ul>
           </div>
-          <h3><%=sitter.first_name%></h3>
+          <h3><%=link_to sitter.first_name, "/profile/#{sitter.profile.id}" %></h3>
           <p><%=sitter.address%></p>
         </div>
       </div>
@@ -188,6 +191,7 @@
                         <h2 class="title-2">Event Location</h2>
                         <p class="subtitle">Herbert Hoover Conference House San Diego, CA</p>
                         <div id="map" class="event-map">
+                        
                         </div>
                     </div>
                 </div>

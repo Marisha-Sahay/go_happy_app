@@ -5,3 +5,10 @@
   padding-left: 30px;
   padding-bottom: 50px;
 }
+.messages {
+  max-height: 450px;
+  overflow-y: auto;
+  .avatar {
+    margin: 0.5rem;
+  }
+}

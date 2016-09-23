@@ -35,6 +35,7 @@ gem 'fog'
 gem 'figaro'
 # photo resizing
 gem 'mini_magick'
+gem 'redis'
 gem 'rails_12factor', group: :production
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

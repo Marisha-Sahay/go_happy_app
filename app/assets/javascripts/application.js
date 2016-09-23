@@ -20,4 +20,5 @@
 //= require main
 //= require angular
 //= require app
+//= require cable
 //= require_tree .
