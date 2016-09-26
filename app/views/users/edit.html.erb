@@ -79,9 +79,13 @@
         </div>
       </div>
       <div class="row">
+      <div class="form-group">
       <div class="field">
+      <div class="col-sm-offset-2 col-sm-10">
         <%= label_tag :image_url %><br>
         <%= file_field_tag :image_url %>
+      </div>
+      </div>
       </div>
       </div>
       <div class="button" align="center">
@@ -90,13 +94,15 @@
       <%end%>
       <div class="row">
         <div class="form-group">
-          <div align="center">
-            <a href="/users/<%= current_user.id %>">Cancel Editing</a>
-          </div>
-          <div class="row">
-            <div class="form-group">
-              <div align="center">
+          <center>
+            <div>
+              <a href="/users/<%= current_user.id %>">Cancel Editing</a>
+            </div>
+            <br>
+            <div>
               <%= link_to "Delete Account", "/users/#{current_user.id}/delete", method: :delete %>
+            </div>
+          </center>
               </div>
             </div>
           </div>

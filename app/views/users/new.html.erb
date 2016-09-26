@@ -1,3 +1,16 @@
+<!-- Header Area -->
+<header class="header-area inner-page">
+<!-- Header Top Area --><!-- 
+<section class="header-top"> -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-xs-12">
+        <div class="header-elements pull-right">
+        </div>
+      </div>
+    </div>
+  </section>
+</header>
 <div class="row">
   <div class="col-md-6">
     <% if @user && @user.errors.any? %>
@@ -65,10 +78,15 @@
           </div>
         </div>
       </div>
+      <br>
       <div class="row">
+      <div class="form-group">
       <div class="field">
+      <div class="col-sm-offset-2 col-sm-10">
         <%= label_tag :image_url %><br>
         <%= file_field_tag :image_url %>
+      </div>
+      </div>
       </div>
       </div>
       <%=hidden_field_tag :user_type, params[:user_type] %>

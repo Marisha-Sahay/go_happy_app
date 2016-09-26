@@ -45,12 +45,14 @@ resources :chat_rooms, only: [:new, :create, :show, :index]
 # root 'chat_rooms#index'
 get '/chatrooms', to: 'chat_rooms#index'
 get '/new_chatroom/:id', to: 'chat_rooms#new_chat'
+get '/messages', to: 'messages#messages'
 # mount ActionCable.server => '/cable'
 
 namespace :api do
   namespace :v1 do
     get "/sitters", to: 'pages#sitter'
     get "/jobs", to: 'pages#job'
+    get "/users", to: 'pages#users'
   end
 end
 

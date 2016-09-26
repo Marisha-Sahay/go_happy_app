@@ -1,22 +1,43 @@
-<% if !@posts.empty? %>
-<div class="row">
-  <% if @posts %>
-  <% @posts.each do |job_post| %>
-  <div class="col-sm-4 col-xs-12 mix kinder play">
-    <a href="/jobposts/<%=job_post.id%>">
-      <p>Title: <%= job_post.title %></p>
-      <p>Expected starting date: <%= job_post.desired_enrollment_date %></p>
-      <p>Expected salary: <%= job_post.salary %></p>
+<!-- Breadcrumb  -->
+<section class="breadcrumb-section">
+  <div class="container">
+    <div class="col-sm-12 col-xs-12 text-center">
+      <div class="breadcrumb-content">
+        <h2>Jobs</h2>
+      </div>
     </div>
-    <% end %>
-    <%else%>
-    <p>We see you still have not posted a job.</p>
-    <a href="/jobposts/new">Start with posting a job today</a>
-    <% end %>
   </div>
+</section>
+<br><br>
+<%if current_user.user_type == "SEEKER" %>
+<div class="link">
+<a href="/jobposts/new">Create new job</a>
+<br><br><br>
+<% end %>
+      <!-- /.breadcrumb-section  -->
+  <% if @posts %>
+  <% if !@posts.empty? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <b><th>Title</th></b>
+        <th>Salary Offered</th>
+        <th>Starting date</th>
+      </tr>
+    </thead>
+    <% @posts.each do |job_post| %>
+    <tbody>
+      <tr>
+        <td><%= link_to "#{job_post.title}", "/jobposts/#{job_post.id}"%></td>
+        <td><%= job_post.salary %></td>
+        <td><%= job_post.desired_enrollment_date %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
   <% else %>
   <div class="row">
-
     <h1>No Results found</h1>
   </div>
+  <% end %>
   <% end %>

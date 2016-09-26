@@ -1,24 +1,24 @@
-<%=form_tag '/login', method: :post do%>
-<form class="form-horizontal">
-  <div class="row">
-    <div class="form-group">
-      <div class="col-sm-offset-3 col-sm-6 inputs-group">
-        <%= label_tag :email %>
-        <%= text_field_tag :email, "",class:"form-control" %>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-offset-3 col-sm-6 inputs-group">
-      <div class="form-group">
-        <%= label_tag :password %>
-        <%= password_field_tag :password, "", class:"form-control" %>
-      </div>
-    </div>
-  </div>
-      <div class="button" align="center">
-        <%= button_tag "<span> Login to your Account</span>".html_safe, class: "btn primary-btn"%>
-      </div>
-  <%end%>
-</div>
-</form>
+            <%=form_tag '/login', method: :post do%>
+            <form class="form-horizontal">
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-sm-offset-3 col-sm-6 inputs-group">
+                    <%= label_tag :email %>
+                    <%= text_field_tag :email, "",class:"form-control" %>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-offset-3 col-sm-6 inputs-group">
+                  <div class="form-group">
+                    <%= label_tag :password %>
+                    <%= password_field_tag :password, "", class:"form-control" %>
+                  </div>
+                </div>
+              </div>
+              <div class="button" align="center">
+                <%= button_tag "<span> Login to your Account</span>".html_safe, class: "btn primary-btn"%>
+              </div>
+              <%end%>
+            </div>
+          </form>

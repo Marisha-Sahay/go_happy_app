@@ -5,14 +5,12 @@
       <img alt=""> <%= image_tag @profile.user.image_url %>
     </div>
   </div>
-  <div>
-  <%= link_to "Start chat", "/new_chatroom/#{@profile.user_id}" %>
-  </div>
   <div class="col-sm-6 col-xs-12">
     <div class="class-information">
-      <h3><%=@profile.user.first_name%></h3>
+      <h3><%=@profile.user.first_name%> </h3>
       <h5><%=@profile.user.address%></h5>
       <h5><%@profile.user.phone_no%></h5>
+      <h5><%= link_to "Start chat", "/new_chatroom/#{@profile.user_id}"%></h5>
       <p>
         <%=@profile.description%>
       </p>
@@ -106,16 +104,16 @@
       </div>
     </div>
     <div class="row">
-    <%@sitters.each do |sitter| %>
+      <%@sitters.each do |sitter| %>
       <div class="col-sm-6 col-md-3 col-xs-12 text-center">
         <div class="single-team">
           <div class="team-img">
             <img alt=""> <%= image_tag sitter.image_url %>
             <ul class="team-social">
-              <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+<!--               <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
               <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
               <li><a href="#" class="gplus"><i class="fa fa-google-plus"></i></a></li>
-              <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li> -->
             </ul>
           </div>
           <h3><%=link_to sitter.first_name, "/profile/#{sitter.profile.id}" %></h3>
@@ -126,79 +124,112 @@
     </div>
   </div>
 </section>
-<% if @reviews %> 
-<div class="row">
-      <div class="col-sm-12 col-xs-12">
-        <div class="sub-heading"><h4>Reviews</h4></div>
-      </div>
-    </div>
-        <div class="row">
-      <% @reviews.each do |review| %>
-      <div class="col-sm-6 col-md-3 col-xs-12 text-center">
-        <div class="single-team">
-          <h3><%=review.name%></h3>
-          <p><%=review.review%></p>
-        </div>
-      </div>
-      <%end%>
-    </div>
-  </div>
-  <% end %>
-
-<!-- /.subject-and-teacher-details -->
-<!-- Call to Action -->
-<% if current_user && current_user.id == @profile.user_id %>
-<section class="callto-action-section">
+<% if !@reviews.empty? %> 
+<section class="subject-and-teacher-details">
   <div class="container">
-    <div class="row">
       <div class="col-sm-12 col-xs-12">
-        <div class="callto-content">
-          <h2>Improve your chances to get a get selected. </h2>
-          <div class="button" align="center">
-          <a href="/profile/<%=@profile.id%>/edit">
-            <%= button_tag "<span> Edit Profile</span>".html_safe, class: "btn primary-btn"%>
-          </a>
-          </div>
-          <div class="clearfix"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<%elsif current_user && current_user.user_type == 'SEEKER'%>
-<section class="callto-action-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 col-xs-12">
-        <div class="callto-content">
-          <h2>Interested in this babysitter? Make sure the sitter contacts you </h2>
-          <div class="button" align="center">
-          <a href="/reviews/new?profile_id=<%=@profile.id%>">
-            <%= button_tag "<span> Write Review</span>".html_safe, class: "btn primary-btn"%>
-            </a>
-          </div>
-          <div class="clearfix"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Map Section -->
-        <section class="map-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 col-xs-12 text-center">
-                        <h2 class="title-2">Event Location</h2>
-                        <p class="subtitle">Herbert Hoover Conference House San Diego, CA</p>
-                        <div id="map" class="event-map">
-                        
-                        </div>
-                    </div>
+        <div class="subject-details">
+          <div class="sub-heading"><h4>Reviews</h4></div>
+          <% @reviews.each do |review| %>
+          <div class="comment-section">
+            <ol>
+              <li>
+                <div class="author-img pull-left">
+                  <img alt=""><%= image_tag review.user.image_url %>
                 </div>
+                <div class="author-details pull-left">
+                  <h5><a href="/users/<%=review.user_id%>"><%=review.name%></a></h5>
+                  <span><%=review.timestamp%></span>
+                  <p>
+                   <%=review.review%>
+                 </p>      
+               </div>
+               </li>
+               <div class="clearfix margin-bottom-inherit"><hr></div>
+               <%end%>
+             </div>
+           </div>
+         </div>
+            <% end %>
+       </section>
+
+
+   <!-- /.subject-and-teacher-details -->
+
+   <!-- Map Section -->
+<section class="map-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-xs-12 text-center">
+        <div class="subject-details">
+          <div class="sub-heading"><h4>Sitter Location</h4>
+          </div></div>
+          <div id="map" class="event-map">
+
+          </div>
+          <p class="subtitle"><%= @profile.user.address %></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /.map-section -->
+  <!-- Call to Action -->
+  <% if current_user && current_user.id == @profile.user_id %>
+  <section class="callto-action-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-xs-12">
+          <div class="callto-content">
+            <h2>Improve your chances to get a get selected. </h2>
+            <div class="button" align="center">
+              <a href="/profile/<%=@profile.id%>/edit">
+                <%= button_tag "<span> Edit Profile</span>".html_safe, class: "btn primary-btn"%>
+              </a>
             </div>
-        </section>
-        <!-- /.map-section -->
-<%end%>
-<%else%>
-<%link_to("/profile/new") %>
-<%end%>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <%elsif current_user && current_user.user_type == 'SEEKER'%>
+  <section class="callto-action-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-xs-12">
+          <div class="callto-content">
+            <h2>Let others know about your experience with this babysitter </h2>
+            <div class="button" align="center">
+              <a href="/reviews/new?profile_id=<%=@profile.id%>">
+                <%= button_tag "<span> Write Review</span>".html_safe, class: "btn primary-btn"%>
+              </a>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <%end%>
+  <%else%>
+  <%link_to("/profile/new") %>
+  <%end%>
+  <script>
+    var map;
+    function initMap() {
+      var myLatLng = {lat:<%=@profile.user.latitude %>, lng:<%= @profile.user.longitude %>};
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 16,
+        center: myLatLng
+      });
+
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Hello World!'
+      });
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmGPjfdpqwd7ZDr0RvSsaXuGVbPJeKeFs&callback=initMap"
+  async defer></script>
