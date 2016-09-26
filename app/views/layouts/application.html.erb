@@ -27,14 +27,16 @@
         </div>
         <ul class="main-menu pull-right">
           <li class="menu-has-child">
-            <a href="index.html">Home</a>
-            <ul>
+            <a href="/">Home</a>
+            <!-- <ul>
               <li><a href="index2.html">Home 2</a></li>
               <li><a href="index3.html">Home 3</a></li>
-            </ul>
+            </ul> -->
           </li>
+          <% if current_user %>
           <li><a href="/chatrooms">My Chats</a></li>
-          <li class="menu-has-child">
+          <% end %>
+          <!-- <li class="menu-has-child">
             <a href="#">Pages</a>
             <ul>
               <li>
@@ -48,7 +50,7 @@
               <li><a href="404.html">404</a></li>
               <li><a href="coming-soon.html">Coming Soon</a></li>
             </ul>
-          </li>
+          </li> -->
           <%if current_user && current_user.user_type == "SEEKER" %>
           <li><a href="/jobposts">My Jobs</a></li>
           <% elsif current_user && current_user.user_type == "SITTER" && current_user.profile%>
@@ -56,12 +58,12 @@
           <%elsif current_user && current_user.user_type == "SITTER" %>
           <li><a href="/profile/new">My Profile</a></li>
           <%end%>
-          <li class="menu-has-child">
+          <!-- <li class="menu-has-child">
             <a href="class.html">Classes</a>
             <ul>
               <li><a href="class-details.html">Classes Details</a></li>
             </ul>
-          </li>
+          </li> -->
           <% if current_user %>
           <li class="menu-has-child">
             <a href="/users/<%=current_user.id%>">Account</a>
@@ -201,7 +203,6 @@
         }
       });
     }
-
   </script>
 
 </body>

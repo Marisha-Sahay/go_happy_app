@@ -8,4 +8,8 @@ class Api::V1::PagesController < ApplicationController
     @posts = JobPost.all
     render json: @posts
   end
+  def users
+    @users = User.where(user_type: "SITTER")
+    render json: @users
+  end
 end

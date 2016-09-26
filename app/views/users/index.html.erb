@@ -2,8 +2,8 @@
 <div class="row">
   <% @users.each do |user| %>
   <div class="col-md-4">
-   <a href="/users/<%= user.id %>">
-     <img src="<%= user.image if user.image %>" width="200" height="200">
+   <a href="/users/<%= user.id %>"
+     <img <%= image_tag user.image_url if user.image %> width="200" height="200">
      <p><%= user.first_name %></p>
    </div>
    <% end %>

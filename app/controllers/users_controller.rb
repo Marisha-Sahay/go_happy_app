@@ -5,8 +5,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(first_name: params[:first_name], last_name: params[:last_name], address: params[:address], phone_no: params[:phone_no], email: params[:email], password: params[:password],
-      password_confirmation: params[:password_confirmation], user_type: params[:user_type], image_url: params[:image_url])
+    @user = User.new(first_name: params[:first_name], last_name: params[:last_name], address: params[:address], phone_no: params[:phone_no], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation], user_type: params[:user_type], image_url: params[:image_url])
   # binding.pry
   if @user.save
     flash[:success] = "Welcome #{@user.first_name}"

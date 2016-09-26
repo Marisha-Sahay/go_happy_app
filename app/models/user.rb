@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :chat_rooms
   has_many :messages
   mount_uploader :image_url, ImageUploader
+  geocoded_by :address   # can also be an IP address
+after_validation :geocode          # auto-fetch coordinates
+
   # attr_accessor :image
 # has_many :applications, class_name: 'JobApplication', foreign_key: 'applier_id'
 

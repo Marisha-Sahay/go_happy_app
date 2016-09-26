@@ -61,6 +61,8 @@ end
 
 def index
   @sitters = User.where(user_type: "SITTER")
+  puts "Hello"
+  puts @sitters
 end
 
 end

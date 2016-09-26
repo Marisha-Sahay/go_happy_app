@@ -31,7 +31,7 @@ class JobpostsController < ApplicationController
           redirect_to '/jobposts/new'
         end
       # throw 'ggh'
-      elsif current_user && type? == 'SITTER'
+      else
         @posts = JobPost.all
       end
     end

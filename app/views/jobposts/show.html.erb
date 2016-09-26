@@ -1,23 +1,58 @@
-<p><%= @post.title %></p>
-<p><%= @post.description %></p>
-<p><%= @post.birthdate %></p>
-<p><%= @post.days %></p>
-<p><%= @post.time %></p>
-<p><%= @post.desired_enrollment_date%></p>
-<p><%=@post.salary%></p>
-<% if current_user && current_user.user_type == "SEEKER" && current_user.id == @post.user_id %>
-<li><%= link_to "Edit", "/jobposts/#{@post.id}/edit" %></li> 
-<li><%= link_to "Delete", "/jobposts/#{@post.id}", method: :delete %></li>
-<% end %>
-<% if current_user && current_user.user_type == "SITTER" %>
-<%=form_tag "/jobapplications/#{@post.id}", method: :post do%>
-<form class="form-horizontal">
-  <div class="form-group">
-    <%= label_tag :additional_information %>
-    <%= text_field_tag :information, "",class:"form-control" %>
+<% if current_user %>
+<!-- Breadcrumb  -->
+<section class="breadcrumb-section">
+  <div class="container">
+    <div class="col-sm-12 col-xs-12 text-center">
+      <div class="breadcrumb-content">
+        <h2>Job Details</h2>
+      </div>
+    </div>
   </div>
-  <div class="button" align="center">
-    <%= button_tag "<span> Apply for the job </span>".html_safe, class: "btn primary-btn"%>
-  </div>
-  <%end%>
-  <%end%>
+</section>
+<!-- /.breadcrumb-section  -->
+<!-- Blog Post Section -->
+<section class="blog-post-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-lg-9 col-xs-12">
+        <div class="blog-post-details">
+          <h2><%= @post.title %></h2>
+          <ul class="author-tag">
+            <li><a href=""><i aria-hidden="true" class="fa fa-clock-o"></i> <%= @post.timestamp %></a></li>
+            <li><a href="/users/<%=@post.user.id%>"><i aria-hidden="true" class="fa fa-user"></i> <%=@post.user.first_name%></a></li>
+            <li><% if current_user && current_user.user_type == "SEEKER" && current_user.id == @post.user_id %>
+            <li><%= link_to "Edit", "/jobposts/#{@post.id}/edit" %></li>
+            <li><%= link_to "Delete", "/jobposts/#{@post.id}", method: :delete %></li>
+            <% end %></li>
+          </ul>
+          <p> <%= @post.description %> </p>
+          <p> Job requirements is on these days of the week: <%= @post.days %>. I am looking for someone who can start from <%= @post.desired_enrollment_date%>. Expecting to find a babysitter whom I can pay <%=@post.salary%>. My Child's birthdate is <%= @post.birthdate %></p>
+          <% if @post.job_applications && current_user.user_type == "SEEKER"%>
+            <div class="comment-section">
+            <h3>Applicants for this job</h3>
+            </div>
+            <p> <% @post.job_applications.each do |application| %> 
+              <%= link_to application.user.first_name, "/profile/#{application.user.profile.id}" %> says <%= application.information %></p>
+              <% end %>
+              <%end %>
+              <% if current_user && current_user.user_type == "SITTER" %>
+              <%=form_tag "/jobapplications/#{@post.id}", method: :post do%>
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <p> We will be sending your profile along with the application. If the seeker likes it then would get back to you. Do you want to add any 
+                    <%= label_tag :additional_information %>
+                    <%= text_field_tag :information, "",class:"text-area" %></p>
+                </div>
+                  <div class="button" align="center">
+                    <%= button_tag "<span> Apply for the job </span>".html_safe, class: "btn primary-btn"%>
+                  </div>
+                  <%end%>
+                  <%end%>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <%else%>
+        <a href="/login"><p>You need to be logged to see job details</p></a>
+        <% end %>
