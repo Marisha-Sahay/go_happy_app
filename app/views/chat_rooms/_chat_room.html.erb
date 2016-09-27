@@ -1,1 +1,7 @@
-<li><%= link_to "Chat with #{User.find(chat_room.recipient_id).first_name}", chat_room_path(chat_room) %></li>
+<% if chat_room.recipient_id == current_user.id %>
+  <% displayed_user = User.find(chat_room.user_id) %>
+<% else %>
+  <% displayed_user = User.find(chat_room.recipient_id) %>
+<% end %>
+
+<li><%= link_to "Chat with #{displayed_user.first_name}", chat_room_path(chat_room) %></li>

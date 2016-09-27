@@ -1,5 +1,5 @@
 body{
-    margin-top:20px;
+    // margin-top:20px;
     // background:#ebeef0;
 }
 .panel {
@@ -176,4 +176,24 @@ body{
     opacity: 0;
     -webkit-transition: all .7s;
     transition: all .7s;
+}
+.chat-body{
+    border-top: 7px solid #92278F;
+    border-bottom: 7px solid #92278F;
+    border-left: 7px solid #92278F;
+    border-right: 7px solid #92278F;
+}
+
+
+
+
+.panel-footer {
+    background-color: white;
+    border: none;
+}
+
+#new_message {
+    .row {
+        background-color: white;
+    }
 }

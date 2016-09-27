@@ -17,10 +17,9 @@
           <div class="col-sm-4 col-xs-12 mix kinder play">
             <div class="single-class">
               <div class="class-img">
+                <a href="/profile/<%=sitter.profile.id%>" class="popup">
                 <img alt=""> <%= image_tag sitter.image_url %>
-                <div class="class-hover">
-                  <a href="/profile/<%=sitter.profile.id%>" class="popup"><i class="icon-link"></i></a>
-                </div>
+                </a>
               </div>
               <div class="class-details">
                 <h3><a href="/profile/<%=sitter.profile.id%>"><%=sitter.first_name%></a></h3>

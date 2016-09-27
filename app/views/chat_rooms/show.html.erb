@@ -1,3 +1,14 @@
+<section class="breadcrumb-section">
+  <div class="container">
+    <div class="col-sm-12 col-xs-12 text-center">
+      <div class="breadcrumb-content">
+        <h2>Chat Room</h2>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+<br>
 <div class="col-sm-4 col-lg-3 col-xs-12">
   <aside class="widget">
     <h4 class="widget-title">Conversations</h4>
@@ -7,16 +18,10 @@
   </aside>
 </div>
 
-<div class="container">
-    <div class="col-md-12 col-lg-8">
-        <div class="panel">
-          <!--Heading-->
-
-
             <div class="container">
                 <div class="row">
                     <div class="col-sm-8 col-lg-9 col-xs-12">
-    
+    <div class = "chat-body">
         <!--Widget body-->
         <div id="demo-chat-body" class="collapse in">
           <div class="nano has-scrollbar" style="height:380px">
@@ -28,7 +33,7 @@
               </ul>
             </div>
             <div class="nano-pane"><div class="nano-slider" style="height: 141px; transform: translate(0px, 0px);"></div></div></div>
-      
+      </div>
               <!--Widget footer-->
               <div class="panel-footer">
                 <%= form_for @message, url: '#' do |f| %>
@@ -38,9 +43,9 @@
         <!--                 <input type="text" placeholder="Enter your text" class="form-control chat-input">
          -->                <%= f.text_area :body, class: 'form-control chat-input' %>
                       </div>
-                      <div class="col-xs-3">
-                        <button class="btn btn-primary btn-block" type="submit">Send</button>
-                      </div>
+                  <div class="button" align="center">
+                    <%= button_tag "<span> Send </span>".html_safe, class: "btn primary-btn"%>
+                  </div>
                   </div>
                 <% end %>
               </div>

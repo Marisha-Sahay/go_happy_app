@@ -4,7 +4,7 @@ class JobpostsController < ApplicationController
 
   def create
     if current_user
-      post = JobPost.new(title: params[:title], description: params[:description], days: params[:days], time: params[:time], birthdate: params[:birthdate], desired_enrollment_date: params[:desired_enrollment_date], user_id: current_user.id, salary: params[:salary])
+      post = JobPost.new(title: params[:title], description: params[:description], days: params[:days], time: params[:time],desired_enrollment_date: params[:desired_enrollment_date], user_id: current_user.id, salary: params[:salary])
       if post.save
         flash[:success] = "Your job is posted"
         redirect_to '/jobposts/#{post.id}'

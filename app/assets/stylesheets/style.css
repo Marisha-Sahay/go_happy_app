@@ -65,13 +65,13 @@ body{
    color: blue;
 }
 .text-area{
-    border: 1px solid #a8a8a8;
+width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
     border-radius: 4px;
-    color: #000000;
     font-size: 16px;
-    height: 145px;
-    margin-bottom: 50px;
-    padding: 20px 0 0 20px;
     resize: none;
-    width: 100%;
+
   }

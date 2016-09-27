@@ -9,7 +9,7 @@
   </div>
 </section>
 <br><br>
-<%if current_user.user_type == "SEEKER" %>
+<%if current_user && current_user.user_type == "SEEKER" %>
 <div class="link">
 <a href="/jobposts/new">Create new job</a>
 <br><br><br>

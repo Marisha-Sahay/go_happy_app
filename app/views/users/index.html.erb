@@ -3,8 +3,8 @@
   <% @users.each do |user| %>
   <div class="col-md-4">
    <a href="/users/<%= user.id %>"
-     <img <%= image_tag user.image_url if user.image %> width="200" height="200">
-     <p><%= user.first_name %></p>
+    <%= image_tag user.image_url if user.image_url %>
+    <p><%= user.first_name %></p>
    </div>
    <% end %>
  </table> 
