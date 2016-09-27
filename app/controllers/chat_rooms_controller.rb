@@ -31,7 +31,14 @@ class ChatRoomsController < ApplicationController
   end
 
   def show
-    @chat_room = ChatRoom.includes(:messages).find_by(id: params[:id])
+    @chat_rooms = ChatRoom.where(user_id: current_user.id).or(ChatRoom.where(recipient_id: current_user.id))
+
+    if params[:id]
+      @chat_room = ChatRoom.includes(:messages).find_by(id: params[:id])
+    else
+      @chat_room = ChatRoom.new
+    end
+
     @message = Message.new
   end
 

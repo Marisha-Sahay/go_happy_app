@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20160923190645) do
     t.string   "salary"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
-    t.date     "birthdate"
+    t.text     "information"
     t.string   "days"
     t.integer  "user_id"
     t.date     "desired_enrollment_date"

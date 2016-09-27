@@ -1,38 +1,36 @@
 <section class="breadcrumb-section">
   <div class="container">
-      <div class="col-sm-12 col-xs-10 text-center">
-        <div class="breadcrumb-content">
-          <h2>Account Details</h2>
-        </div>
+    <div class="col-sm-12 col-xs-10 text-center">
+      <div class="breadcrumb-content">
+        <h2>Account Details</h2>
       </div>
     </div>
   </div>
+</div>
 </section>
 <!-- /.breadcrumb-section  -->
-<!-- Teacher Details Section -->
-<section class="teacher-details-section">
+<!-- Event Details Section -->
+<section class="event-details-section">
   <div class="container">
-      <div class="col-sm-10 col-sm-offset-1 col-xs-8 text-center">
-        <div class="single-teacher">
-          <div class="teacher-img">
-            <img alt=""><%= image_tag @user.image_url %>
-          </div>
-          <h2 class="title-2"><%= @user.first_name %></h2>
-          <p class="subtitle color"><%= @user.email %></p>
+    <div class="row">
+      <div class="col-sm-6 col-xs-12">
+        <div class="event-img">
+          <img alt=""><%= image_tag @user.image_url %>
         </div>
-        <div class="teacher-content">
-          <p> <%= @user.address %> </p>
-          <p><%= @user.created_at %></p>
+      </div>
+      <div class="col-sm-6 col-xs-12">
+        <div class="single-event">
+          <br>
+          <h3><a href="#"><%= @user.first_name %></a></h3>
+          <a href="#"><%= @user.email %></a>
+          <a href="#"><%= @user.address %></a>
+          <p><%= @user.timestamp %></p>   
         </div>
       </div>
     </div>
-    <div class="clearfix"></div>
   </div>
-</div>
-</div>
-</div>
 </section>
-
+<!-- /.event-section -->
 <!-- Call to Action -->
 <% if @user.id == current_user.id %>
 <section class="callto-action-section">
@@ -42,14 +40,14 @@
         <div class="callto-content">
           <h2>Want to update some information?</h2>
           <div class="button" align="center">
-          <a href="/users/<%=@user.id%>/edit">
-            <%= button_tag "<span> Edit account</span>".html_safe, class: "btn primary-btn"%>
+            <a href="/users/<%=@user.id%>/edit">
+              <%= button_tag "<span> Edit account</span>".html_safe, class: "btn primary-btn"%>
             </a>
-          <div class="clearfix"></div>
+            <div class="clearfix"></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<% end %>
+  </section>
+  <% end %>
 <!-- /.callto-action-section

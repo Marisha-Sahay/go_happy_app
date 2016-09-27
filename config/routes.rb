@@ -43,7 +43,7 @@ post '/reviews',to: 'reviews#create'
 #ChatRooms routes
 resources :chat_rooms, only: [:new, :create, :show, :index]
 # root 'chat_rooms#index'
-get '/chatrooms', to: 'chat_rooms#index'
+get '/chatrooms', to: 'chat_rooms#show'
 get '/new_chatroom/:id', to: 'chat_rooms#new_chat'
 get '/messages', to: 'messages#messages'
 # mount ActionCable.server => '/cable'

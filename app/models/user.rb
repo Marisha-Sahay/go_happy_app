@@ -21,4 +21,8 @@ validates :password, :presence => true,
 :length => {:within => 6..40}
 validates :user_type, :presence=>true
 
+def timestamp
+  created_at.strftime('%d %B %Y')
+end
+
 end

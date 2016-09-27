@@ -10,7 +10,14 @@
       <h3><%=@profile.user.first_name%> </h3>
       <h5><%=@profile.user.address%></h5>
       <h5><%@profile.user.phone_no%></h5>
-      <h5><%= link_to "Start chat", "/new_chatroom/#{@profile.user_id}"%></h5>
+      <% if current_user && @profile.user_id == current_user.id %>
+      <h5><%= link_to "Edit Profile", "/profile/${@profile.id}/edit" %> </h5>
+      <%else%>
+      <h5><%= link_to "Chat with me", "/new_chatroom/#{@profile.user_id}"%></h5>
+      <%end%>
+      <% if current_user && current_user.user_type == "SEEKER" %>
+      <h5><%= link_to "Write Review for me", "/reviews/new?profile_id=#{@profile.id}" %></h5>
+      <%end%>
       <p>
         <%=@profile.description%>
       </p>
