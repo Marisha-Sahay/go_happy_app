@@ -21,38 +21,52 @@
             <li><a href=""><i aria-hidden="true" class="fa fa-clock-o"></i> <%= @post.timestamp %></a></li>
             <li><a href="/users/<%=@post.user.id%>"><i aria-hidden="true" class="fa fa-user"></i> <%=@post.user.first_name%></a></li>
             <li><% if current_user && current_user.user_type == "SEEKER" && current_user.id == @post.user_id %>
-            <li><%= link_to "Edit", "/jobposts/#{@post.id}/edit" %></li>
-            <li><%= link_to "Delete", "/jobposts/#{@post.id}", method: :delete %></li>
-            <% end %></li>
-          </ul>
-          <p> <%= @post.description %> </p>
-          <p> Job requirements is on these days of the week: <%= @post.days %>. I am looking for someone who can start from <%= @post.desired_enrollment_date%>. Expecting to find a babysitter whom I can pay <%=@post.salary%>.</p>
-          <% if @post.job_applications && current_user.user_type == "SEEKER"%>
+              <li><%= link_to "Edit", "/jobposts/#{@post.id}/edit" %></li>
+              <li><%= link_to "Delete", "/jobposts/#{@post.id}", method: :delete %></li>
+              <% end %>
+            </li>
+            </ul>
+            <p> <%= @post.description %> </p>
+            <p> Job requirements is on these days of the week: <%= @post.days %>. I am looking for someone who can start from <%= @post.desired_enrollment_date%>. Expecting to find a babysitter whom I can pay <%=@post.salary%>.</p>
+            <% if !@post.job_applications.empty? && current_user.user_type == "SEEKER"%>
             <div class="comment-section">
-            <h3>Applicants for this job</h3>
+              <h3>Applicants for this job</h3>
             </div>
-            <p> <% @post.job_applications.each do |application| %> 
-              <%= link_to application.user.first_name, "/profile/#{application.user.profile.id}" %> says <%= application.information %></p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Message</th>
+                </tr>
+              </thead>
+              <% @post.job_applications.each do |application| %>
+              <tbody>
+                <tr>
+                  <td><%= link_to application.user.first_name, "/profile/#{application.user.profile.id}" %></td>
+                  <td><%= link_to application.information, "/profile/#{application.user.profile.id}" %></td>
+                </tr>
+              </tbody> 
               <% end %>
               <%end %>
-              <% if current_user && current_user.user_type == "SITTER" %>
-              <%=form_tag "/jobapplications/#{@post.id}", method: :post do%>
-              <form class="form-horizontal">
-                <div class="form-group">
-                  <p> We will be sending your profile along with the application. If the seeker likes it then would get back to you. Do you want to add any 
-                    <%= label_tag :personalized_message, nil,placeholder: "Add some information you need to highlight for the job" %></p>
-                    <%= text_area_tag :information, "",class:"text-area"%>
+            </table>
+            <% if current_user && current_user.user_type == "SITTER" %>
+            <%=form_tag "/jobapplications/#{@post.id}", method: :post do%>
+            <form class="form-horizontal">
+              <div class="form-group">
+                <p> We will be sending your profile along with the application. If the seeker likes it then would get back to you. Do you want to add any 
+                  <%= label_tag :personalized_message, nil,placeholder: "Add some information you need to highlight for the job" %></p>
+                  <%= text_area_tag :information, "",class:"text-area"%>
                 </div>
-                  <div class="button" align="center">
-                    <%= button_tag "<span> Apply for the job </span>".html_safe, class: "btn primary-btn"%>
-                  </div>
-                  <%end%>
-                  <%end%>
+                <div class="button" align="center">
+                  <%= button_tag "<span> Apply for the job </span>".html_safe, class: "btn primary-btn"%>
                 </div>
+                <%end%>
+                <%end%>
               </div>
             </div>
           </div>
-        </section>
-        <%else%>
-        <a href="/login"><p>You need to be logged to see job details</p></a>
-        <% end %>
+        </div>
+      </section>
+      <%else%>
+      <a href="/login"><p>You need to be logged to see job details</p></a>
+      <% end %>
