@@ -73,5 +73,7 @@ width: 100%;
     border-radius: 4px;
     font-size: 16px;
     resize: none;
-
+  }
+  .footer-text{
+    text-align: center;
   }

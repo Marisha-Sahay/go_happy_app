@@ -116,12 +116,6 @@
         <div class="single-team">
           <div class="team-img">
             <img alt=""> <%= image_tag sitter.image_url %>
-            <ul class="team-social">
-<!--               <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#" class="gplus"><i class="fa fa-google-plus"></i></a></li>
-              <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li> -->
-            </ul>
           </div>
           <h3><%=link_to sitter.first_name, "/profile/#{sitter.profile.id}" %></h3>
           <p><%=sitter.address%></p>
@@ -142,7 +136,7 @@
             <ol>
               <li>
                 <div class="author-img pull-left">
-                  <img alt=""><%= image_tag review.user.image_url %>
+                  <img alt=""><%= image_tag review.reviewer_image %>
                 </div>
                 <div class="author-details pull-left">
                   <h5><a href="/users/<%=review.user_id%>"><%=review.name%></a></h5>
@@ -157,7 +151,7 @@
              </div>
            </div>
          </div>
-            <% end %>
+        <% end %>
        </section>
 
 
