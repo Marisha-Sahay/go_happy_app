@@ -37,6 +37,8 @@ gem 'figaro'
 gem 'mini_magick'
 gem 'redis'
 gem 'geocoder'
+gem 'paperclip'
+gem 'aws-sdk', '~> 2.3'
 gem 'rails_12factor', group: :production
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
